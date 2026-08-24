@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>झारखंड सामाजिक नवाचार पोर्टल | Jharkhand Societal Innovation Collaboration Portal</title>
+  
+  <!-- CSS Dependencies -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/leaflet.css" />
+</head>
+<body>
+
+  <!-- Site Global Header -->
+  <header class="site-header">
+    <a href="#/" class="brand-container">
+      <div class="brand-logo">JH</div>
+      <div class="brand-title-group">
+        <h1 data-i18n="brand_title">झारखंड सामाजिक नवाचार पोर्टल</h1>
+        <p data-i18n="brand_tagline">सामुदायिक समस्याओं से सहयोगात्मक नवाचार और वास्तविक प्रभाव तक।</p>
+      </div>
+    </a>
+
+    <div class="header-actions">
+      <!-- Live Active User Persona Profile Badge -->
+      <div id="user-profile-badge" class="user-badge">
+        👤 <strong>Ramesh Munda</strong> (CITIZEN)
+      </div>
+
+      <!-- MANDATORY VISIBLE LANGUAGE SELECTOR -->
+      <div class="lang-selector-wrapper">
+        <label for="global-lang-select" style="font-weight: bold; margin-right: 4px;">🌐 भाषा:</label>
+        <select id="global-lang-select" class="lang-selector" aria-label="Select Language">
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="en">English</option>
+          <option value="bn">বাংলা (Bengali)</option>
+          <option value="or">ଓଡ଼ିଆ (Odia)</option>
+          <option value="mr">मराठी (Marathi)</option>
+        </select>
+      </div>
+
+      <!-- Quick Persona Switcher Simulator -->
+      <div class="lang-selector-wrapper" style="background: var(--govt-blue-light); border-color: var(--govt-blue);">
+        <label for="persona-role-select" style="font-weight: bold; margin-right: 4px; color: var(--govt-blue);">👤 भूमिका:</label>
+        <select id="persona-role-select" class="lang-selector" style="color: var(--govt-blue);">
+          <option value="CITIZEN">Citizen (नागरिक)</option>
+          <option value="UNIVERSITY_ADMIN">University Admin</option>
+          <option value="STUDENT">Student Researcher</option>
+          <option value="INDUSTRY">Industry / CSR Partner</option>
+          <option value="GOVERNMENT_OFFICIAL">Govt Official (IAS)</option>
+          <option value="ADMIN">System Admin</option>
+        </select>
+      </div>
+
+      <!-- Accessibility High Contrast Mode Button -->
+      <button type="button" id="high-contrast-toggle" class="btn btn-outline" style="min-height: 40px; padding: 4px 8px; font-size: 0.85rem;">👁️ High Contrast</button>
+    </div>
+  </header>
+
+  <!-- Global Main Navigation Bar -->
+  <nav style="background: var(--bg-surface); border-bottom: 1px solid var(--border-color); padding: 0 1.5rem;">
+    <div class="container" style="padding: 0.4rem 0;">
+      <ul class="nav-links" style="display: flex; gap: 0.5rem; flex-wrap: wrap; list-style: none;">
+        <li class="nav-item"><a href="#/" data-i18n="nav_home">मुख्य पृष्ठ</a></li>
+        <li class="nav-item"><a href="#/challenges" data-i18n="nav_challenges">समस्याएं (Challenges)</a></li>
+        <li class="nav-item"><a href="#/solutions" data-i18n="nav_solutions">समाधान / प्रोजेक्ट्स</a></li>
+        <li class="nav-item"><a href="#/map" data-i18n="nav_map">नक्शा (GIS Map)</a></li>
+        <li class="nav-item"><a href="#/success-stories" data-i18n="nav_stories">सफलता की कहानियां</a></li>
+        <li class="nav-item"><a href="#/citizen/report" style="color: var(--accent-gold); font-weight: 800;" data-i18n="nav_report">📢 समस्या दर्ज करें</a></li>
+        <li class="nav-item"><a href="#/citizen/dashboard" data-i18n="nav_dashboard">डैशबोर्ड</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main View Router Container Shell -->
+  <main id="main-content" class="app-container" style="margin-top: 1rem;">
+    <!-- Dynamic views rendered here -->
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: var(--bg-surface); border-top: 2px solid var(--border-color); padding: 2rem 1.5rem; margin-top: 3rem; text-align: center; color: var(--text-muted);">
+    <div class="container">
+      <p style="font-weight: 700; color: var(--primary-green);">Jharkhand Societal Innovation Collaboration Portal</p>
+      <p style="font-size: 0.85rem; margin-top: 0.25rem;">Government of Jharkhand | BIT Mesra | IIT (ISM) Dhanbad | Birsa Agricultural University | NIT Jamshedpur</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem;">Built for State-Level Scalability & Ground Accessibility</p>
+    </div>
+  </footer>
+
+  <!-- Modal Dialog Container -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-box" id="modal-box"></div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- JavaScript Libraries & Application Code -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  
+  <script src="js/i18n.js"></script>
+  <script src="js/api-client.js"></script>
+  <script src="js/gis-engine.js"></script>
+  <script src="js/ai-service.js"></script>
+  
+  <script src="js/views/public-views.js"></script>
+  <script src="js/views/citizen-views.js"></script>
+  <script src="js/views/university-views.js"></script>
+  <script src="js/views/student-views.js"></script>
+  <script src="js/views/industry-views.js"></script>
+  <script src="js/views/government-views.js"></script>
+  <script src="js/views/admin-views.js"></script>
+  
+  <script src="js/app.js"></script>
+</body>
+</html>
